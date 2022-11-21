@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://example.com/2022/11/21/Test-swiper-index/</loc>
+    <lastmod>2022-11-21</lastmod>
+  </url>
+  <url>
     <loc>http://example.com/2021/11/10/Listener%E5%86%85%E5%AD%98%E9%A9%AC/</loc>
     <lastmod>2022-11-21</lastmod>
   </url>
@@ -258,10 +262,6 @@
   </url>
   <url>
     <loc>http://example.com/2022/11/10/%E6%B5%8B%E8%AF%95obsidian%E7%9A%84markdown%E8%AF%AD%E6%B3%95%E6%98%AF%E5%90%A6%E5%85%BC%E5%AE%B9%E4%BA%8Ehexo/</loc>
-    <lastmod>2022-11-21</lastmod>
-  </url>
-  <url>
-    <loc>http://example.com/2022/11/21/Test-swiper-index/</loc>
     <lastmod>2022-11-21</lastmod>
   </url>
   <url>

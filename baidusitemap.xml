@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://example.com/2022/11/22/Bufferfly%E6%90%AD%E5%BB%BA%E6%8C%87%E5%8D%97/</loc>
+    <lastmod>2022-11-22</lastmod>
+  </url>
+  <url>
+    <loc>http://example.com/2022/11/22/cobalstrike%E5%85%8D%E6%9D%80%E6%B5%8B%E8%AF%95/</loc>
+    <lastmod>2022-11-22</lastmod>
+  </url>
+  <url>
     <loc>http://example.com/2022/11/21/Test-swiper-index/</loc>
     <lastmod>2022-11-21</lastmod>
   </url>

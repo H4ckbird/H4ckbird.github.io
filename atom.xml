@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2022-11-24T08:53:09.011Z</updated>
+  <updated>2022-11-25T02:05:18.118Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>本地靶场渗透</title>
+    <link href="http://example.com/2022/11/25/%E6%9C%AC%E5%9C%B0%E9%9D%B6%E5%9C%BA%E6%B8%97%E9%80%8F/"/>
+    <id>http://example.com/2022/11/25/%E6%9C%AC%E5%9C%B0%E9%9D%B6%E5%9C%BA%E6%B8%97%E9%80%8F/</id>
+    <published>2022-11-25T02:01:56.000Z</published>
+    <updated>2022-11-25T02:05:18.118Z</updated>
+    
+    <content type="html"><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="Oh, this is an invalid password. Check and try again, please." data-whm="OOPS, these decrypted content may changed, but you can still have a look.">  <script id="hbeData" type="hbeData" data-hmacdigest="638788eaa1ccee88c7a2e01354e36332606a57bfd4d1cd8cc36fe4302547c4f9">b3c9a99c0ccdca4a7128185684909d47c7b4109eddc3e1e95fa17bdb523e92f7f88b5df88cbfdfe86c0f0a40d3b4817571d6eb6543dcb651fa9e914493cc625e4d59a5e75a78ec76cd07ec534cc6a03a7e5c3e340226fd6859a0206b19d578cecdca14edd00e1a492fcf7c692e1eb5fa76c0e611335c9e03dae6d03c9f2e11ec3c1eba01b2a8977f08973e806bd3bb2e82b5dc47650655cc381b50430c19cf5068e7375e4c605bf576db213a6f07a37970457404e30e03954732b712b79d09f474e1993216801ea0f4d2d813101518752f00c10f6d8cd915ae5d621a8add23d0337973b68fd23e2f6965c1d5d7dc029977cc8ba8845a9014745b112165def2953a712f221ec722f88150b942d5aff1b4d9af1e3f6055a879b45eed9d1171aaaac77b4dadf93176ee5161301771d1669d2b8cc68e6c38a53185e4cb35f858b5e1b7fc45d99f5cacb21b27c5c764e154fcbd00f67bf876549d63288fd4878576c564b4ca492ead70b515f7b42ffc70860fb33f30acb2e6dbea09f4548dd8ead6e09f9930c6a3ec802d9da88184c562ca82552006368ba56db0d78d5fccc999e6179daf1d6ea39d0df130e5756b92e3ab709e5c3b2afee4861d37872a8109e58384c24d37c838d190fde0f1c440ea70d64cb4a68ffb8d27bb26968e5ad0d06f2d0e91d317a71626a9be6b48832d66eac9d74fc3b4611f21876c84f80131f36b8f093edbbaa070a1a9f5038eb7f3f9c0adea60b1fe847037bd5e0622fa4e9e725ed5f9e944590d7a799b91b51430c0aa6a0c3c893f12bf6c60c9b9eff2221b8ee9c88a28bf3819b61fc204caf2e85445713c</script>  <div class="hbe hbe-content">    <div class="hbe hbe-input hbe-input-default">      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">        <span class="hbe hbe-input-label-content hbe-input-label-content-default">暂时不对普通用户开放</span>      </label>    </div>  </div></div><script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">]]></content>
+    
+    
+    <summary type="html">渗透测试简单学习</summary>
+    
+    
+    
+    <category term="渗透测试" scheme="http://example.com/categories/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/"/>
+    
+    
+    <category term="靶场渗透" scheme="http://example.com/tags/%E9%9D%B6%E5%9C%BA%E6%B8%97%E9%80%8F/"/>
+    
+  </entry>
   
   <entry>
     <title>Windows-SDK</title>
@@ -163,7 +184,7 @@
     <published>2022-11-22T10:28:12.000Z</published>
     <updated>2022-11-22T12:03:17.260Z</updated>
     
-    <content type="html"><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="Oh, this is an invalid password. Check and try again, please." data-whm="OOPS, these decrypted content may changed, but you can still have a look.">  <script id="hbeData" type="hbeData" data-hmacdigest="3a47fd570f7861fbec2dd173b1cf12745e7d41de44edad5011b5f204d1f13182">48e22157b1ef105701eba779d55791b94473791e743914b36adcaf48d5050f2b88a980657e3110c1f5c0538f81b5fff498891ec26b4ce29098a2a84bfd6d380eeb88e9096f607e3ed5d7fc8ed0e81d99d0b244b77974e84164960a1a56c5ede3c3c80f161ac60d6767b6cc78367e7790fef62e9969e98fe92fb1dc8cbffc6a68891c3f7545b0a4dfe99b8a6718f8d5cec406125b6c8294c6422ecc949e2dcf3665ae07da010f88d8b11eb720d434e063934afc36f013b9f05eae64c42be2484f117aa0e8963b92bdc782542833c0e32d429bcfd938024c7cf89ce63c1f2c748767470338e53feeff0dfbc24d1cf6e858545fc1191181142eb8128861eed858eb9e492a76b8b414ab4ed31e37334f553195f4fdef078c6f28ab69f236d0d6a925744dbdcd7635bfb1d7a46345eae9c4c0d617135a10d10d736030137b7eca13cb367cb36bb879bf8b052cf41b682769fccec7c1b025438699292f0d8fc50cbd91de276372e516b20bf3e004fa3e0d69e84aa0d124a2a1d62ae1ebd57e18784955466176ba7241cde1dbe4d899fba30f59b3a470bb415efa6d6ecd0f3a895d210b98d19c6c6d557b62a616d378597013b2add143ff879ae56648a57136b731a30059c44772d1830d10e5f00a3b1b2d595afdb7ecfc795b21d21f69c937d7efbc5858759eb7a0e7dd65feea5c5379054e08daf1d68cccfcd97347163f243e969d19ff7b2a842803f4a39626056920834989443e5c5d0cf8a43b3d241f7460c582bdfc22eb339b845c9eb833cd1f369cd2a4</script>  <div class="hbe hbe-content">    <div class="hbe hbe-input hbe-input-default">      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">        <span class="hbe hbe-input-label-content hbe-input-label-content-default">请输出正确的密码</span>      </label>    </div>  </div></div><script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">]]></content>
+    <content type="html"><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="Oh, this is an invalid password. Check and try again, please." data-whm="OOPS, these decrypted content may changed, but you can still have a look.">  <script id="hbeData" type="hbeData" data-hmacdigest="3a47fd570f7861fbec2dd173b1cf12745e7d41de44edad5011b5f204d1f13182">48e22157b1ef105701eba779d55791b94473791e743914b36adcaf48d5050f2b88a980657e3110c1f5c0538f81b5fff498891ec26b4ce29098a2a84bfd6d380eeb88e9096f607e3ed5d7fc8ed0e81d99d0b244b77974e84164960a1a56c5ede3c3c80f161ac60d6767b6cc78367e7790fef62e9969e98fe92fb1dc8cbffc6a68891c3f7545b0a4dfe99b8a6718f8d5cec406125b6c8294c6422ecc949e2dcf3665ae07da010f88d8b11eb720d434e063934afc36f013b9f05eae64c42be2484f117aa0e8963b92bdc782542833c0e32d429bcfd938024c7cf89ce63c1f2c748767470338e53feeff0dfbc24d1cf6e858545fc1191181142eb8128861eed858eb9e492a76b8b414ab4ed31e37334f553195f4fdef078c6f28ab69f236d0d6a925744dbdcd7635bfb1d7a46345eae9c4c0d617135a10d10d736030137b7eca13cb367cb36bb879bf8b052cf41b682769fccec7c1b025438699292f0d8fc50cbd91de276372e516b20bf3e004fa3e0d69e84aa0d124a2a1d62ae1ebd57e18784955466176ba7241cde1dbe4d899fba30f59b3a470bb415efa6d6ecd0f3a895d210b98d19c6c6d557b62a616d378597013b2add143ff879ae56648a57136b731a30059c44772d1830d10e5f00a3b1b2d595afdb7ecfc795b21d21f69c937d7efbc5858759eb7a0e7dd65feea5c5379054e08daf1d68cccfcd97347163f243e969d19ff7b2a842803f4a39626056920834989443e5c5d0cf8a43b3d241f7460c582bdfc22eb339b845c9eb833cd1f369cd2a4</script>  <div class="hbe hbe-content">    <div class="hbe hbe-input hbe-input-default">      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">        <span class="hbe hbe-input-label-content hbe-input-label-content-default">听说只有管理员才可以查看哦</span>      </label>    </div>  </div></div><script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">]]></content>
     
     
     <summary type="html">cobaltstrike免杀测试</summary>
@@ -386,30 +407,6 @@
     
     
     
-    
-  </entry>
-  
-  <entry>
-    <title>Thinking_in_java高级volatile</title>
-    <link href="http://example.com/2022/11/10/Thinking_in_java%E9%AB%98%E7%BA%A7%E4%B9%8Bvolatile/"/>
-    <id>http://example.com/2022/11/10/Thinking_in_java%E9%AB%98%E7%BA%A7%E4%B9%8Bvolatile/</id>
-    <published>2022-11-09T16:18:15.000Z</published>
-    <updated>2022-11-23T08:18:05.076Z</updated>
-    
-    <content type="html"><![CDATA[<p><a href="https://muxiaobai.github.io/2019/10/12/Thinking-in-java-%E9%AB%98%E7%BA%A7%E4%B9%8Bvolatile/">https://muxiaobai.github.io/2019/10/12/Thinking-in-java-%E9%AB%98%E7%BA%A7%E4%B9%8Bvolatile/</a></p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;p&gt;&lt;a href=&quot;https://muxiaobai.github.io/2019/10/12/Thinking-in-java-%E9%AB%98%E7%BA%A7%E4%B9%8Bvolatile/&quot;&gt;https://muxiaobai.github.io/2019/1</summary>
-      
-    
-    
-    
-    <category term="Java安全" scheme="http://example.com/categories/Java%E5%AE%89%E5%85%A8/"/>
-    
-    
-    <category term="Java安全" scheme="http://example.com/tags/Java%E5%AE%89%E5%85%A8/"/>
     
   </entry>
   
